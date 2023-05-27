@@ -67,8 +67,9 @@ local function registeConfig(configObj, postConfigObj, targetFile)
                 table.insert(configObj[index].targets, target)
             end
         end
+		-- 下面应该是找已存在的配置的labels中，不含新增配置的labels，将没有的加上
         for key, value in pairs(postConfigObj.labels) do
-            if tableValueFind(configObj[index].labels, key) == false then
+            if tableKeyFind(configObj[index].labels, key) == false then
                 configObj[index].labels[key] = value
             end
         end
